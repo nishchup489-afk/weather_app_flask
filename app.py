@@ -73,6 +73,6 @@ def home():
 
     return render_template("index.html" , country_name = country_name ,flag = flag ,  sunset = sunset , sunrise = sunrise ,city_name = city , weather_url = weather_url , weather = weather , error_messege=error_messege)
 
-
 if __name__ == '__main__':
-    app.run( host='0.0.0.0', port=5960)
+    port = int(os.environ.get("PORT", 5000))
+    app.run( host='0.0.0.0', port=port)
