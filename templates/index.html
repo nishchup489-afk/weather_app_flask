@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEATHER APP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1 class="head">
+           🌤️ WEATHER APP
+        </h1>
+    </header>
+    <main>
+        <form action="{{url_for('home')}}" method="post">
+            <input type="text" value="" name="city_name" , placeholder="Enter city or country name" required ><br>
+            <button type="submit"> SUBMIT </button>
+        </form>
+            
+    {% if weather %}
+        <div class="result-container"> 
+
+            <div class="result">
+                <div class="show_name">
+                    <p>{{city_name}} , {{country_name}} </p>
+                </div>
+                <div class="icon">
+                    {% if weather and 'weather' in weather and weather['weather']|length > 0 %}
+                        <img src="https://openweathermap.org/img/wn/{{ weather['weather'][0]['icon'] }}@2x.png" alt="weather icon">
+                    {% else %}
+                        <p>No icon available</p>
+                    {% endif %}
+                </div>
+                <div class="flag">
+                    <img class="flag" src="{{flag}}" alt="flag" >
+                </div>
+            </div>
+
+            {% if weather and 'main' in weather %} 
+                <div class="temp">
+                    <h2>Temperature</h2>
+                    <hr>
+                    <div>
+                        <span class="temp">Temperature:</span>
+                        <p>{{ weather['main']['temp'] | default('N/A', true) }} °C</p>
+                    </div>
+                    <div>
+                        <span class="feels_like">Feels like:</span>
+                        <p>{{ weather['main']['feels_like'] | default('N/A', true) }} °C</p>
+                    </div>
+                    <div>
+                        <span class="temp_min">Minimum Temp:</span>
+                        <p>{{ weather['main']['temp_min'] | default('N/A', true) }} °C</p>
+                    </div>
+                    <div>
+                        <span class="temp_max">Maximum Temp:</span>
+                        <p>{{ weather['main']['temp_max'] | default('N/A', true) }} °C</p>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="phsg">
+                <h2>Details</h2>
+                <hr>
+                <div>
+                    <span class="pressure">Pressure:</span>
+                    <p>{{ weather['main']['pressure'] | default('N/A', true) }} hPa</p>
+                </div>
+                <div>
+                    <span class="humidity">Humidity:</span>
+                    <p>{{ weather['main']['humidity'] | default('N/A', true) }} %</p>
+                </div>
+                <div>
+                    <span class="wind_speed"> SEA LEVEL: </span>
+                    <p>{{ weather['main']['sea_level'] | default('N/A', true) }} m/s</p>
+                    
+
+                </div>
+                     <div>
+                    <span class="wind_speed"> GROUND LEVEL: </span>
+                    <p>{{ weather['main']['grnd_level'] | default('N/A', true) }} m/s</p>
+                    
+
+                </div>
+                </div>
+
+            <div class="vwc">
+                <h2>Visibility & Wind</h2><hr>
+                <div>
+                    <span class="visibility">VISIBILITY:</span> 
+                    <p>{{ weather['visibility'] | default('N/A', true) }} m</p>
+                </div>
+                <div>
+                    <span class="wind_speed">WIND SPEED:</span> 
+                    <p>{{ weather['wind']['speed'] | default('N/A', true) }} m/s</p>
+                </div>
+           
+            </div>
+
+            <div class="time">
+                <h2>Daylight</h2><hr>
+                <div>
+                    <span class="sunrise">SUNRISE: </span><p>{{ sunrise }}</p>
+                </div>
+                <div>
+                    <span class="sunset">SUNSET: </span><p>{{ sunset }}</p>
+                </div>
+            </div>
+
+        </div> {% else %}
+        <p>No weather data available. Try searching a valid city!</p>
+    {% endif %}
+    </main>
+    <footer>
+        <p> &copy; Made by NISHTHUP !!!</p>
+    </footer>
+</body>
+</html>

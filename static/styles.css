@@ -1,0 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+    --bg-color: #f4f7fa;
+    --card-color: #ffffff;
+    --text-primary: #1a1c2c;
+    --text-secondary: #5a647d;
+    --accent-color: #6a7bff;
+    --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+h1, h2, h3 {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eef0f4;
+    margin: 1rem 0;
+}
+
+.head {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+main {
+    width: 100%;
+    max-width: 900px;
+}
+
+form {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+form input[type="text"] {
+    flex-grow: 1;
+    border: 1px solid #dcdfe6;
+    padding: 0.85rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    background: var(--card-color);
+    transition: all 0.2s ease;
+}
+
+form input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(106, 123, 255, 0.2);
+}
+
+form button[type="submit"] {
+    padding: 0.85rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #5566ee;
+}
+
+.result-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.result, .vwc, .time, .phsg, .temp {
+    background: var(--card-color);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.result:hover, .vwc:hover, .time:hover, .phsg:hover, .temp:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.result {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.result .icon img {
+    width: 120px;
+    height: 120px;
+    margin-top: -20px;
+}
+
+.result .flag img {
+    width: 60px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.result .temp h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.show_name {
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.temp > div,
+.phsg > div,
+.vwc > div,
+.time > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+}
+
+.temp span,
+.phsg span,
+.vwc span,
+.time span {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.temp p,
+.phsg p,
+.vwc p,
+.time p {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.temp h2,
+.phsg h2,
+.vwc h2,
+.time h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+
+.temp > div:first-of-type p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.flag {
+    width: 3rem;
+    height: auto;
+}
+
+.details a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.details a:hover {
+    text-decoration: underline;
+}
+
+p {
+    line-height: 1.6;
+}
+
+footer {
+    text-align: center;
+    margin-top: 3rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+    .time {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .head {
+        font-size: 2rem;
+    }
+
+    form {
+        flex-direction: column;
+    }
+
+    form input[type="text"], form button[type="submit"] {
+        width: 100%;
+    }
+
+    .result-container {
+        grid-template-columns: 1fr;
+    }
+
+    .result .icon img {
+        width: 100px;
+        height: 100px;
+    }
+}

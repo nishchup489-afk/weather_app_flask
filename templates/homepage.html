@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Forecast</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/weather(1).png') }}" alt="Weather icon" class="card-icon">
+
+    <h1 class="title">Weather</h1>
+    <h2 class="subtitle">Forecast</h2>
+
+    <form action="{{ url_for('homepage') }}" method="post">
+      <button type="submit" class="get-started-btn">Get Started</button>
+    </form>
+
+    <a href="{{ url_for('ca') }}" class="create-account-link">Create an account</a>
+  </div>
+
+</body>
+</html>

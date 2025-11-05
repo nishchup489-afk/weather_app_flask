@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+:root {
+  --accent-color: #007aff;
+  --card-color: #ffffff;
+  --text-primary: #1a1c2c;
+  --text-secondary: #718096;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #d3c7ee, #a6c1ee);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.card {
+  text-align: center;
+  background: var(--card-color);
+  padding: 3.5rem 3rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  transition: transform 0.3s ease;
+  width: 90%;
+  max-width: 400px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.card-icon {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  color: var(--accent-color);
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.get-started-btn {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  width: 100%;
+  max-width: 280px;
+}
+
+.get-started-btn:hover {
+  background: #0062cc;
+  box-shadow: 0 5px 15px rgba(0, 122, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.create-account-link {
+  display: block;
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.create-account-link:hover {
+  color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 2.5rem 2rem;
+  }
+  .title {
+    font-size: 2.2rem;
+  }
+  .subtitle {
+    font-size: 1.3rem;
+  }
+  .card-icon {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 2rem 1.5rem;
+    border-radius: 1rem;
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+  .subtitle {
+    font-size: 1.1rem;
+  }
+  .get-started-btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}
