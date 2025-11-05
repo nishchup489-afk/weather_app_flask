@@ -1,9 +1,16 @@
 from flask import Flask, request, url_for , render_template , redirect
 from datetime import datetime
 from PIL import Image, ImageTk
+from dotenv import load_dotenv
+import os
 app = Flask(__name__)
 
-API = "8f1e081dc0cbbfdba83a1bf949074267"
+
+
+load_dotenv()
+API = os.getenv("OPENWEATHER_API_KEY")
+
+
 
 @app.route('/' , methods=['POST' , 'GET'])
 def homepage():
@@ -68,4 +75,4 @@ def home():
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5960)
+    app.run( host='0.0.0.0', port=5960)
